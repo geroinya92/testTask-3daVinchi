@@ -1,22 +1,31 @@
-import Header from './components/header'
+import Sidebar from './components/sidebar'
 import './App.css';
-import Main from './components/main';
+import Content from './components/content';
+import { StickyContainer, Sticky } from 'react-sticky';
 
 function App() {
   return (
-    <body className='body'>
-      
-        <header className="App-header">
-          <Header />
-        </header>
-       
-      
-    </body>
+    <StickyContainer className='container'>
+      {/*...*/}
+      <Sticky>
+        {({
+          style,
 
+          // the following are also available but unused in this example
+          isSticky,
+          wasSticky,
+          distanceFromTop,
+          distanceFromBottom,
+          calculatedHeight
+        }) => (
+          <nav style={style}>
+            <Sidebar />
+          </nav>
+        )}
+      </Sticky>
+      {<Content />}
+    </StickyContainer>
   );
 }
 
-export default App;
-/*<main className='Main'>
-<Main />
-</main>*/
+export default App
